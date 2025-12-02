@@ -173,6 +173,10 @@ def main():
         inbrowser=True
     )
 
+# For Hugging Face Spaces compatibility
+if __name__ == "__main__":
+    main()
+
 if __name__ == "__main__":
     main()
 
