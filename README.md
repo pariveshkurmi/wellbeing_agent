@@ -1,83 +1,76 @@
-# WellbeingAgent Crew
+---
+title: Wellbeing Agent
+emoji: 🌿
+colorFrom: purple
+colorTo: blue
+sdk: gradio
+sdk_version: 4.0.0
+app_file: app.py
+pinned: false
+license: mit
+short_description: Wellbeing companion powered by CrewAI + Gemini
+---
 
-Welcome to the WellbeingAgent Crew project, powered by [crewAI](https://crewai.com). This template is designed to help you set up a multi-agent AI system with ease, leveraging the powerful and flexible framework provided by crewAI. Our goal is to enable your agents to collaborate effectively on complex tasks, maximizing their collective intelligence and capabilities.
+# 🌿 Wellbeing Agent
 
-## Installation
+Welcome to the Wellbeing Agent project, powered by [crewAI](https://crewai.com) and deployed with [Gradio](https://www.gradio.app/). This app brings together multiple specialized wellbeing agents—covering mood, stress, sleep, motivation, and general knowledge—to provide supportive, actionable guidance.
 
-Ensure you have Python >=3.10 <3.14 installed on your system. This project uses [UV](https://docs.astral.sh/uv/) for dependency management and package handling, offering a seamless setup and execution experience.
+## Features
 
-First, if you haven't already, install uv:
+- **Intent Routing**: A router agent classifies the user’s request and picks the right specialist.
+- **Dedicated Agents**: Mood, Stress, Sleep, Motivation, and Knowledge agents each have tailored prompts and goals.
+- **Gradio Chat UI**: Beautiful, responsive chat interface with copy-friendly bubbles and helpful tips.
+- **Thread-Safe Crew Init**: The CrewAI crew is initialized once and reused across requests.
 
-```bash
-pip install uv
-```
+## Local Installation
 
-Next, navigate to your project directory and install the dependencies:
-
-(Optional) Lock the dependencies and install them by using the CLI command:
-```bash
-crewai install
-```
-### Customizing
-
-**Add your `OPENAI_API_KEY` into the `.env` file**
-
-- Modify `src/wellbeing_agent/config/agents.yaml` to define your agents
-- Modify `src/wellbeing_agent/config/tasks.yaml` to define your tasks
-- Modify `src/wellbeing_agent/crew.py` to add your own logic, tools and specific args
-- Modify `src/wellbeing_agent/main.py` to add custom inputs for your agents and tasks
-
-## Running the Project
-
-### Option 1: Web UI (Recommended)
-
-To launch the beautiful web interface, run one of these commands from the project root:
-
-**Windows:**
-```bash
-# Easiest: Double-click run_ui.bat or run in PowerShell:
-.\run_ui.bat
-
-# Or using uv run python directly:
-uv run python -m wellbeing_agent.app
-```
-
-**Linux/Mac:**
-```bash
-# Make executable and run:
-chmod +x run_ui.sh
-./run_ui.sh
-
-# Or using uv run python directly:
-uv run python -m wellbeing_agent.app
-```
-
-**Note:** Make sure you're in the project root directory (`3_crew/community_contributions/wellbeing_agent`) when running these commands.
-
-This will open a Gradio web interface in your browser at `http://localhost:7860` where you can chat with the wellbeing agent interactively.
-
-### Option 2: Command Line Interface
-
-To run the agent from the terminal:
+1. Ensure Python `>=3.10,<3.14` is installed.
+2. Install dependencies:
 
 ```bash
-$ crewai run
+pip install -r requirements.txt
 ```
 
-This command initializes the wellbeing_agent Crew, assembling the agents and assigning them tasks as defined in your configuration.
+3. Set your environment variable(s):
 
-The agent will prompt you for input and provide wellbeing support for mood, stress, sleep, motivation, and general wellness questions.
+```bash
+export GOOGLE_API_KEY="your-google-api-key"
+```
 
-## Understanding Your Crew
+4. Run the Gradio UI:
 
-The wellbeing_agent Crew is composed of multiple AI agents, each with unique roles, goals, and tools. These agents collaborate on a series of tasks, defined in `config/tasks.yaml`, leveraging their collective skills to achieve complex objectives. The `config/agents.yaml` file outlines the capabilities and configurations of each agent in your crew.
+```bash
+python app.py
+```
 
-## Support
+This launches the UI at `http://localhost:7860`.
 
-For support, questions, or feedback regarding the WellbeingAgent Crew or crewAI.
-- Visit our [documentation](https://docs.crewai.com)
-- Reach out to us through our [GitHub repository](https://github.com/joaomdmoura/crewai)
-- [Join our Discord](https://discord.com/invite/X4JWnZnxPb)
-- [Chat with our docs](https://chatg.pt/DWjSBZn)
+## Project Scripts
 
-Let's create wonders together with the power and simplicity of crewAI.
+`pyproject.toml` exposes several helpful entry points via `uv run` or `python -m`:
+
+- `run_ui` / `wellbeing_agent.app:main` – start the Gradio interface
+- `run_crew` / `wellbeing_agent.main:run` – CLI runner for CrewAI
+- `train`, `replay`, `test`, `run_with_trigger` – scaffolding for advanced workflows
+
+On Windows you can also double-click `run_ui.bat`; on Linux/macOS, use `run_ui.sh`.
+
+## Hugging Face Spaces Deployment
+
+This repository is ready for Spaces:
+
+1. Upload (or push via Git) the entire repo to your Space.
+2. Ensure `requirements.txt` lives at the repo root.
+3. Keep this `README.md` with the YAML front matter so Spaces renders metadata.
+4. Set the `GOOGLE_API_KEY` secret in **Settings → Variables and secrets**.
+
+For detailed instructions, see `DEPLOYMENT.md`.
+
+## Support & Customization
+
+- Modify `src/wellbeing_agent/config/agents.yaml` to tweak agent personas or models.
+- Update `src/wellbeing_agent/config/tasks.yaml` to adjust task prompts and outputs.
+- Extend `src/wellbeing_agent/tools/` for custom tool integrations.
+- Documentation: [crewAI Docs](https://docs.crewai.com)
+
+Let’s build supportive, empathetic agents together. 💚
