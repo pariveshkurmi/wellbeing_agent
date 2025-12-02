@@ -99,11 +99,6 @@ def create_ui():
     
     with gr.Blocks(
         title="Wellbeing Agent",
-        theme=gr.themes.Soft(
-            primary_hue="purple",
-            secondary_hue="blue",
-            font=[gr.themes.GoogleFont("Inter"), "system-ui", "sans-serif"]
-        ),
         css=custom_css
     ) as demo:
         
