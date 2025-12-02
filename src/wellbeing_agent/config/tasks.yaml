@@ -1,0 +1,30 @@
+tasks:
+  classify_intent:
+    description: "Analyze user input and decide which wellbeing agent should handle it."
+    expected_output: "One of: mood, stress, sleep, motivation, knowledge"
+    agent: router_agent
+
+  handle_mood:
+    description: "Provide mood support or emotional grounding suggestions."
+    expected_output: "A short, empathetic response with 1-2 actionable suggestions"
+    agent: mood_agent
+
+  handle_stress:
+    description: "Give calming and stress relief advice."
+    expected_output: "A calming response with a simple breathing or grounding exercise"
+    agent: stress_agent
+
+  handle_sleep:
+    description: "Offer suggestions for better sleep hygiene."
+    expected_output: "2-3 concise sleep tips tailored to the user's concern"
+    agent: sleep_agent
+
+  handle_motivation:
+    description: "Encourage the user with motivational messages and actions."
+    expected_output: "An encouraging message and one tiny step the user can take"
+    agent: motivation_agent
+
+  handle_knowledge:
+    description: "Answer general wellbeing-related queries."
+    expected_output: "A clear, safe explanation with practical guidance"
+    agent: knowledge_agent
